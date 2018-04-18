@@ -20,21 +20,25 @@ cleanRoom
 public class HotelRoom {
 	//fields
 	int roomNumber;
-	String roomType;  //single or double
+	String roomType;  //single, double, triple
 //	boolean isReserved;
 	boolean isVacant;
 	double costPerNight;
 	double roomServiceFee = 50;
+	String customerName = "";
+
 	
 	//Constructor
 	public HotelRoom(int num, String type){
 		roomNumber = num;
 		roomType = type;
 		if (roomType.equals("single")) costPerNight = 100;
-		else costPerNight = 150;
+		else if (roomType.equals("double")) costPerNight = 150;
+		else costPerNight = 200;
 		isVacant= true;
 	}
 	
+	//when a customer checks out
 	public void cleanRoom(){
 		System.out.println("Room "+ roomNumber+ " has been cleaned.");
 	}
@@ -47,5 +51,14 @@ public class HotelRoom {
 //		else System.out.println("Room is occupied.");
 	}
 	
+public void toggleVacancy(){
+		if(this.isVacant){
+			isVacant= false;
+			System.out.println("Room " +this.roomNumber+" is occupied.");
+		} else{
+			isVacant= true;
+			System.out.println("Room " +this.roomNumber+" is vacant.");
+		}
+	}
 	
 }
