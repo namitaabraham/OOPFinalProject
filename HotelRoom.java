@@ -33,8 +33,8 @@ public class HotelRoom {
 		System.out.printf("Room: %19s\n", this.roomNumber);
 		System.out.printf("Room type: %14s\n", this.roomType);
 		System.out.printf("Cost per night:   $%3.2f\n",this.costPerNight);
-		System.out.print("Room status:       ");
-		if (isVacant) System.out.println("Vacant\n");
+		System.out.print("Room status:     ");
+		if (isVacant) System.out.println("  Vacant\n");
 		else {
 			System.out.println("Occupied\n");
 		}

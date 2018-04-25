@@ -148,6 +148,7 @@ public class HotelDriver {
 		System.out.println(CustomerName+" is now in Room "+ (freeRoom+1)+". It is a "+ arr[freeRoom].roomType+ " room.");
 				//toggle vacancy
 		arr[freeRoom].toggleVacancy();
+		System.out.println();
 	}
 	
 	public static void customerCheckOut(String cusName, HotelRoom[] arr){
@@ -167,6 +168,7 @@ public class HotelDriver {
 		
 		//erase customerName from room
 		arr[roomNum-1].customerName = "";
+		System.out.println();
 		return;
 	}
 	
@@ -186,7 +188,7 @@ public class HotelDriver {
 
 		double bill = (daysStayed * arr[roomNum-1].costPerNight) + arr[roomNum-1].roomServiceFee;
 	//if roomService called
-		System.out.println("Your total bill is: $"+ bill); //use printf for formatting (complexity)
+		System.out.println("Your total bill is: $"+ bill); 
 		
 	}
 
