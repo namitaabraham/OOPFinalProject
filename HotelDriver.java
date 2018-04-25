@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class HotelDriver {
 
 	public static void main(String[] args){
-		Scanner console = new Scanner(System.in);
+		
 	
 		HotelRoom[] HotelArray = new HotelRoom[10];
 		HotelRoom room1 = new HotelRoom(1, "single");
@@ -29,16 +29,23 @@ public class HotelDriver {
 		HotelArray[8]= room9;
 		HotelArray[9]= room10;
 		
+		//runs infinite loop until "-1" is typed into the console during the first parameter.
 		while(true){
-			
-			System.out.println("New or returning customer?");
+			Scanner console = new Scanner(System.in);
+			System.out.println("New or returning customer? [Type '-1' to break]");
 
 			String answer = console.next(); 
 
-			if(answer.equalsIgnoreCase("new")){
+			if (answer.equals("-1")) { //checks for -1, if found it breaks the loop
+				break;
+			}else if(answer.equalsIgnoreCase("new")){ //looks for keyword 'new', if found runs the method 'newCustomer(HotelArray)'
 				newCustomer(HotelArray);
-			} else {
+			} else if((answer.equalsIgnoreCase("returning")) || (answer.equalsIgnoreCase("return")) ) { //looks for keyword 'return' or 'returning', if found runs the method 'returningCustomer(HotelArray)'
 				returningCustomer(HotelArray);
+			
+			} else { //if any invalid inputs are entered, return to begining of loop
+				//returningCustomer(HotelArray); 
+				//break;
 			}
 		}
 		
