@@ -3,22 +3,6 @@
  * Namita Abraham
  * Michael Epstein
  * HotelRoom class
-Fields:
-Name is room number
-String customer name
-String roomType (single, double)
-Boolean isReserved (customer makes reservation)
-Boolean isVacant (customer checks in or out)
-Double costPerNight
-static Double roomServicePrice = 50
-Boolean needsCleaning
-
-Methods:
-Constructor- roomNumber, roomType, 
-If roomType = single { costPerNight = $100 } else = 150
-Set isVacant =true
-cleanRoom
-
  */
 public class HotelRoom {
 	//fields
@@ -46,13 +30,13 @@ public class HotelRoom {
 	}
 	
 	public void DisplayInfo(){ //FIX FORMATING
-		System.out.println("Room: 	         "+ this.roomNumber);
-		System.out.println("Room type:	     "+ this.roomType);
-		System.out.println("Cost per night: $"+this.costPerNight);
-		System.out.print("Room status: ");
-		if (isVacant) System.out.println("Vacant");
+		System.out.printf("Room: %19s\n", this.roomNumber);
+		System.out.printf("Room type: %14s\n", this.roomType);
+		System.out.printf("Cost per night:   $%3.2f\n",this.costPerNight);
+		System.out.print("Room status:       ");
+		if (isVacant) System.out.println("Vacant\n");
 		else {
-			System.out.println("Occupied");
+			System.out.println("Occupied\n");
 		}
 	}
 	
