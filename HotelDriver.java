@@ -5,6 +5,7 @@
  * Michael Epstein
  * This is a class that runs the Hotel Management program. 
  * */
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class HotelDriver {
@@ -63,15 +64,28 @@ public class HotelDriver {
 	
 	public static void seeRoomInfo(HotelRoom[] arr){
 		Scanner console = new Scanner(System.in); 
-		System.out.println("Which room would you like to learn about? Please enter the room number: ");
-		int roomNum = console.nextInt();
-		if (roomNum > arr.length) {
-			System.out.println("There are only "+ arr.length+ " rooms in this hotel.");
-			return;
-		}
-		arr[roomNum-1].DisplayInfo();
+		System.out.println("Which room would you like to learn about? Please enter the room number(1-10): ");
+			
+		boolean valid = false;
+		do {
+			try {
+				int roomNum = console.nextInt();
+				if (roomNum > arr.length || roomNum < arr.length) {
+					
+					System.out.println("There are only "+ arr.length+ " rooms in this hotel.");
+					return;
+					}
+				arr[roomNum-1].DisplayInfo();
+							
+			
+	} catch (InputMismatchException e) {
+				System.out.println("Invalid input. Please enter an integer value between 1 and 10.");
+				valid = true;
 	}
-	
+		} while (!valid);
+
+}
+
 	
 	public static void returningCustomer(HotelRoom[] arr){
 		Scanner console = new Scanner(System.in); 
