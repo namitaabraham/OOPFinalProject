@@ -61,35 +61,39 @@ public class HotelDriver {
 		}
 		
 	}
-	
+	//retrieves information about the individual rooms.
 	public static void seeRoomInfo(HotelRoom[] arr){
 		Scanner console = new Scanner(System.in); 
 		System.out.println("Which room would you like to learn about? Please enter the room number(1-10): ");
 			
-		boolean valid = false;
+		boolean valid = false; //sets boolean to false for the do/while loop0
+		
 		do {
+			//runs an if statement that checks for values outside of the array.
 			try {
 				int roomNum = console.nextInt();
 				System.out.println(arr.length);//
+				//if values entered are greater than array, breaks out of the statement.
 				if (roomNum > arr.length) {
 					System.out.println("There are only "+ arr.length+ " rooms in this hotel.");
 					break;
 					
 				}
+				//if the statement is not true, accesses a displayInfo method which displays info for each room entered by the user.
 					arr[roomNum-1].DisplayInfo();	
 				
 			
-	
+				//catches exceptions for illegal data types that are non-integer values and displays error. Also changes do/while condition to end loop.
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid input. Please enter an integer value between 1 and 10.");
 				valid = true;
-	
+				//catches values less than the array, such as zero and negative numbers and displays error. Also changes do/while condition to end loop.
 			} catch (ArrayIndexOutOfBoundsException e) {
 				System.out.println("Invalid input. Value was 0 or below and as such was out of bounds.");
 				valid = true;
 
 			}
-			
+			//as long as this is true, this loop will run. Only changes if exceptions are run.
 		} while (!valid);
 
 
