@@ -70,21 +70,30 @@ public class HotelDriver {
 		do {
 			try {
 				int roomNum = console.nextInt();
-				if (roomNum > arr.length || roomNum < arr.length) {
-					
+				System.out.println(arr.length);//
+				if (roomNum > arr.length) {
 					System.out.println("There are only "+ arr.length+ " rooms in this hotel.");
-					return;
-					}
-				arr[roomNum-1].DisplayInfo();
-							
+					break;
+					
+				}
+					arr[roomNum-1].DisplayInfo();	
+				
 			
-	} catch (InputMismatchException e) {
+	
+			} catch (InputMismatchException e) {
 				System.out.println("Invalid input. Please enter an integer value between 1 and 10.");
 				valid = true;
-	}
+	
+			} catch (ArrayIndexOutOfBoundsException e) {
+				System.out.println("Invalid input. Value was 0 or below and as such was out of bounds.");
+				valid = true;
+
+			}
+			
 		} while (!valid);
 
-}
+
+	}
 
 	
 	public static void returningCustomer(HotelRoom[] arr){
