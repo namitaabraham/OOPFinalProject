@@ -62,7 +62,7 @@ public class HotelDriver {
 			}
 
 		}
-		//retrieves information about the individual rooms.
+		//Method that retrieves information about individual rooms
 		public static void seeRoomInfo(HotelRoom[] arr){
 			Scanner console = new Scanner(System.in);
 			System.out.println("Which room would you like to learn about? Please enter the room number(1-10): ");
@@ -98,12 +98,15 @@ public class HotelDriver {
 				//as long as this is true, this loop will run. Only changes if exceptions are run.
 			} while (!valid);
 		}
-
+		
+		//Method that allows returning customers to check out or have their room cleaned
 		public static void returningCustomer(HotelRoom[] arr){
 			Scanner console = new Scanner(System.in);
 			int roomNum = 0;
 			System.out.println("What is your name?");
 			String cusName = console.next();
+			
+			//finds customer name and room number in Hotel array 
 			for(int i=0; i<arr.length; i++){
 				if( arr[i].customerName.equalsIgnoreCase(cusName)){
 					roomNum = i +1;
@@ -111,7 +114,8 @@ public class HotelDriver {
 					continue;
 				}
 			}
-
+			
+			//prints if customer name is not found in array 
 			if (roomNum == 0){
 				System.out.println("You are not in our files. Please try again.");
 				System.out.println();
@@ -125,8 +129,8 @@ public class HotelDriver {
 				checkOutAnswer = console.next();
 			}
 			if (checkOutAnswer.equalsIgnoreCase("Y")) {
-				getTotalBill(cusName, arr);
-				customerCheckOut(cusName, arr);
+				getTotalBill(cusName, arr); //calls getTotalBill method to print customer bill total
+				customerCheckOut(cusName, arr);//calls customerCheckOut method
 				return;
 			}
 
@@ -137,7 +141,7 @@ public class HotelDriver {
 				cleaningAnswer = console.next();
 			}
 			if (cleaningAnswer.equalsIgnoreCase("Y")) {
-				arr[roomNum].cleanRoom();
+				arr[roomNum].cleanRoom(); //calls cleanRoom method in HotelRoom class
 				System.out.println();
 				return;
 			}
@@ -145,7 +149,8 @@ public class HotelDriver {
 				return;
 
 		}
-
+		
+		//method that allows new customers to check into a room 
 		public static void newCustomer(HotelRoom[] arr){
 			Scanner console = new Scanner(System.in);
 			System.out.println("What is your name?");
@@ -159,9 +164,11 @@ public class HotelDriver {
 			assignRoomToCustomer(cusName, rmType, arr);
 
 		}
-
+		
+		//method that assigns a vacant room to a customer
 		public static void assignRoomToCustomer(String CustomerName, String roomType, HotelRoom[] arr){
 			int freeRoom = -1;
+			//loop that finds a vacant room and compares it to the room type requested
 			for(int i=0; i<arr.length; i++){
 				if (arr[i].isVacant && arr[i].roomType.equalsIgnoreCase(roomType)){
 						freeRoom= i;
@@ -175,16 +182,18 @@ public class HotelDriver {
 				System.out.println("There are no rooms available.");
 				return;
 			}
-				//add customer name to this room
+			//add customer name to this room
 			arr[freeRoom].customerName = CustomerName;
 			System.out.println(CustomerName+" is now in Room "+ (freeRoom+1)+". It is a "+ arr[freeRoom].roomType+ " room.");
-					//toggle vacancy
+			//toggle vacancy
 			arr[freeRoom].toggleVacancy();
 			System.out.println();
 		}
 
+		//method that allows a customer to check out from their room 
 		public static void customerCheckOut(String cusName, HotelRoom[] arr){
 			int roomNum=0;
+			//loop that checks for customer name in array 
 			for(int i=0; i<arr.length; i++){
 				if( arr[i].customerName.equals(cusName)){
 					roomNum = i +1;
@@ -203,13 +212,15 @@ public class HotelDriver {
 			System.out.println();
 			return;
 		}
-
+		
+		//method that gets the total bill for a customer
 		public static void getTotalBill(String cusName, HotelRoom[] arr){
 			Scanner console = new Scanner(System.in);
 			System.out.println("How many days did you stay? Please enter a postive integer.");
 			int daysStayed= console.nextInt();
 			//add exception or while loop to make sure input is an integer and greater than zero
 			int roomNum=0;
+			//loop that checks for customer name in array 
 			for(int i=0; i<arr.length; i++){
 				if( arr[i].customerName.equals(cusName)){
 					roomNum = i +1;
