@@ -1,15 +1,13 @@
 import java.util.Arrays;
-//add scanner, read user input to test all methods, add exceptions
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
-//add exceptions and comments, maybe some new methods
 /* Michael Scott Paper Company
 * Sarah Ahmed sa1145
 * Namita Abraham
 * Michael Epstein
 * This is a class that runs the Hotel Management program.
 * */
-import java.util.InputMismatchException;
 
 public class HotelDriver {
 
@@ -41,7 +39,6 @@ public class HotelDriver {
 
 			while(true){
 
-				System.out.println("");
 				System.out.println("Please select an option: (enter letter only)");
 				System.out.println("A: See Room Information");
 				System.out.println("B: New customer");
@@ -100,10 +97,7 @@ public class HotelDriver {
 				}
 				//as long as this is true, this loop will run. Only changes if exceptions are run.
 			} while (!valid);
-
-
 		}
-
 
 		public static void returningCustomer(HotelRoom[] arr){
 			Scanner console = new Scanner(System.in);
@@ -120,6 +114,7 @@ public class HotelDriver {
 
 			if (roomNum == 0){
 				System.out.println("You are not in our files. Please try again.");
+				System.out.println();
 				return;
 			}
 
@@ -143,6 +138,7 @@ public class HotelDriver {
 			}
 			if (cleaningAnswer.equalsIgnoreCase("Y")) {
 				arr[roomNum].cleanRoom();
+				System.out.println();
 				return;
 			}
 
@@ -223,7 +219,7 @@ public class HotelDriver {
 			}
 
 			double bill = (daysStayed * arr[roomNum-1].costPerNight) + arr[roomNum-1].roomServiceFee;
-		//if roomService called
+	
 			System.out.println("Your total bill is: $"+ bill);
 
 		}
